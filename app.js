@@ -56,8 +56,7 @@ clearCookie.addEventListener("click", () => {
 });
 
 clearInput = () => {
-  inputName.value = "";
-  inputValue.value = "";
+  form.reset();
   nameCookie.textContent = "";
   valueCookie.textContent = "";
 };
