@@ -14,7 +14,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!inputName.value && !inputValue.value) {
     handleError();
-  } else {
+  } else if (inputName.value && inputValue.value) {
     createCookie(inputName.value, inputValue.value);
     showPushNotification("green", "Cookie crée");
   }
@@ -32,6 +32,13 @@ createCookie = (name, value) => {
   nameCookie.textContent = name;
   valueCookie.textContent = value;
   document.cookie = name + "=" + value;
+};
+
+updatedCookie = (name, value) => {
+  nameCookie.textContent = name;
+  valueCookie.textContent = value;
+  document.cookie = name + "=" + value;
+  showPushNotification("orange", "Cookie modifié");
 };
 
 showPushNotification = (color, value) => {
