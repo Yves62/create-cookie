@@ -16,7 +16,7 @@ form.addEventListener("submit", (e) => {
     handleError();
   } else if (inputName.value && inputValue.value) {
     createCookie(inputName.value, inputValue.value);
-    showPushNotification("green", "Cookie crée");
+    showPushNotification({color : 'green', name : 'Cookie crée'})
   }
 });
 
@@ -41,11 +41,11 @@ updatedCookie = (name, value) => {
   showPushNotification("orange", "Cookie modifié");
 };
 
-showPushNotification = (color, value) => {
+showPushNotification = ({color, name}) => {
   toast.style.display = "block";
   toast.style.backgroundColor = color;
   toast.style.color = "white";
-  toast.textContent = value;
+  toast.textContent = name;
   setTimeout(() => {
     toast.style.display = "none";
   }, 2000);
@@ -65,7 +65,7 @@ deleteCookie = (name) => {
   document.cookie = `${name} =; Max-Age=0`;
   clearInput();
   displayCookie.style.display = "none";
-  showPushNotification("red", "Cookie supprimé");
+  showPushNotification({color : 'red', name : 'Cookie supprimé'})
 };
 
 handleError = () => {
